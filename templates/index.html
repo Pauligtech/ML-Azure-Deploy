@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iris Flower Classification</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body class="bg-light">
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card shadow">
+                    <div class="card-header text-center bg-primary text-white">
+                        <h4>Iris Flower Classifier</h4>
+                    </div>
+                    <div class="card-body">
+                        {% if error %}
+                        <div class="alert alert-danger">{{ error }}</div>
+                        {% endif %}
+
+                        <form action="/predict" method="POST">
+                            <div class="mb-3">
+                                <label for="sepal_length" class="form-label">Sepal Length</label>
+                                <input type="text" class="form-control" id="sepal_length" name="sepal_length" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="sepal_width" class="form-label">Sepal Width</label>
+                                <input type="text" class="form-control" id="sepal_width" name="sepal_width" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="petal_length" class="form-label">Petal Length</label>
+                                <input type="text" class="form-control" id="petal_length" name="petal_length" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="petal_width" class="form-label">Petal Width</label>
+                                <input type="text" class="form-control" id="petal_width" name="petal_width" required>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary w-100">Predict</button>
+                        </form>
+
+                        {% if result is not none %}
+                        <div class="alert alert-success mt-3 text-center">
+                            Predicted Class: <strong>{{ result }}</strong>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
